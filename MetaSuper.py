@@ -7,6 +7,11 @@ from inspect import isfunction
 import time
 
 class MetaSuper(type):
+    '''
+    generic framework for a decorator super class. can extend before and after methods
+    to intercept and log method calls. Can also override _genericWrapper for more control,
+    such as automatic memoizing. 
+    '''
     def __new__(cls, name, bases, attrs):
         classFunctions = filter(lambda x: isfunction(x[1]), attrs.items())
         for item in classFunctions:
@@ -30,6 +35,10 @@ class MetaSuper(type):
         pass
     
 class MetaTiming(MetaSuper):
+    '''
+    generates timing data about all runs. Right now just prints out data, 
+    but can easily be extended to store data
+    '''
     @classmethod
     def methodBefore(cls, *args, **kwargs):
         cls.start = time.time()
