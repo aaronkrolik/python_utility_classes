@@ -4,7 +4,7 @@ Created on Oct 30, 2013
 @author: aaronkrolik
 '''
 
-class CircularBuffer(object):
+class Circulant(object):
     def __init__(self):
         self.row1 = []
         self.matrix = []
@@ -27,7 +27,7 @@ class CircularBuffer(object):
         print "\n"
             
 if __name__ == "__main__":     
-    x = CircularBuffer()
+    x = Circulant()
     x.append(5)
     x.append(6)
     x.append(7)
